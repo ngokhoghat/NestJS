@@ -9,7 +9,7 @@ export const ProductSchema = new mongoose.Schema({
 });
 
 
-export const catsProviders = [
+export const ProductProviders = [
   {
     provide: constant.Schema.CAT_MODEL,
     useFactory: (connection: Connection) => connection.model('Product', ProductSchema),
