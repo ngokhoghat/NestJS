@@ -12,7 +12,7 @@ export class CatsService {
   constructor(
     @Inject('CAT_MODEL')
     private catModel: Model<Cat>,
-  ) {}
+  ) { }
 
   async create(createCatDto: any): Promise<Cat> {
     const createdCat = new this.catModel(createCatDto);
@@ -20,6 +20,10 @@ export class CatsService {
   }
 
   async findAll(): Promise<Cat[]> {
+    // const storageRef = firebase.storage().ref();
+
+    // console.log(storageRef);
+
     return this.catModel.find().exec();
   }
 }
