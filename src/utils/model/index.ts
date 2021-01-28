@@ -1,0 +1,1 @@
+export * as commonModel from './common'

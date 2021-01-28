@@ -23,31 +23,42 @@
     body img {
       width: 100%;
       height: 100%;
-      filter: blur(8px);
-    }
-
-    body .content {
-      z-index: 1;
-      padding: 10px 20px;
-      border-radius: 3px;
-      position: absolute;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-      background: rgba(255, 255, 255, .8);
     }
 
     body .link {
       margin-top: 10px;
     }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      background: #fff;
+      padding: 10px 15px;
+      border-radius: 3px;
+    }
   </style>
 </head>
 
 <body>
-  <div class="content">
-    <h1 class="title">Wellcome to Coffee house</h1>
-    <a class="link" href="">go to Home Page</a>
+  <div class="container">
+    <div class="content">
+      <h1 class="title">Wellcome to Coffee house</h1>
+      <a class="link" href="">go to Home Page</a>
+    </div>
   </div>
   <img src="https://coffeeordie.com/wp-content/uploads/2020/01/AdobeStock_269016655-1024x576.jpeg" alt="" srcset="">
 </body>

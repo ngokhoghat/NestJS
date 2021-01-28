@@ -2,7 +2,7 @@ import { NestApplication, NestFactory } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 
-import * as serviceAccount  from './config/coffee-house-3eb7f-firebase-adminsdk-emt3h-677d69511f.json'
+import * as serviceAccount from './utils/json/coffee-house-3eb7f-firebase-adminsdk-emt3h-ae0c49db37.json';
 
 import { AppModule } from './modules/app.module';
 import { join } from 'path';

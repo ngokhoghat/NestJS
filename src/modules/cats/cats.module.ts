@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
 
-import { catsProviders } from 'src/database/schema/products';
+import { catsProviders } from 'src/database/schema/cats';
 import { DatabaseModule } from 'src/database/database.module';
 
 @Module({

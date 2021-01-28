@@ -1,18 +1,17 @@
 import * as mongoose from 'mongoose';
 import { Connection } from 'mongoose';
-import { constant } from 'src/utils';
 
-export const ProductSchema = new mongoose.Schema({
+export const CatSchema = new mongoose.Schema({
   name: String,
   age: Number,
   breed: String,
 });
 
 
-export const ProductProviders = [
+export const catsProviders = [
   {
-    provide: constant.Schema.CAT_MODEL,
-    useFactory: (connection: Connection) => connection.model('Product', ProductSchema),
-    inject: [constant.Schema.CAT_MODEL],
+    provide: 'CAT_MODEL',
+    useFactory: (connection: Connection) => connection.model('Cat', CatSchema),
+    inject: ['DATABASE_CONNECTION'],
   },
 ];

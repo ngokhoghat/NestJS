@@ -1,20 +1,19 @@
 import { Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer'
+import path from 'path';
+import fs from 'fs';
 
 import * as admin from 'firebase-admin';
 import { CatsService } from './cats.service';
 
-
-const path = require('path');
-const fs = require('fs');
 @Controller('cats')
 export class CatsController {
   constructor(private readonly appService: CatsService) { }
 
   @Get()
   getHello(): any {
-
+    return ''
   }
 
   @Post()
@@ -25,11 +24,8 @@ export class CatsController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
-      destination: './public/uploads'
-      , filename: (req, file, cb) => {
-        // Generating a 32 random chars long string
-        const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')
-        //Calling the callback passing the random name generated with the original extension name
+      destination: './public/uploads',
+      filename: (req, file, cb) => {
         cb(null, file.originalname)
       }
     })
@@ -54,7 +50,7 @@ export class CatsController {
       .then((file: any) => {
         const { metadata } = file[0];
         fs.unlinkSync(filePath);
-        
+
         return metadata
       }).catch(err => {
 

@@ -1,4 +1,4 @@
-import { IRemoteConfig } from './config.interface'
+import { IRemoteConfig } from "src/utils/model/common";
 
 let configs: IRemoteConfig | undefined
 
