@@ -1,6 +1,7 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { handleErrorRequest } from 'src/database/gateways/mongodb';
 
 import { Product } from './products.model';
 import { ProductsService } from './products.service';
@@ -10,18 +11,18 @@ export class ProductsController {
   constructor(private readonly appService: ProductsService) { }
 
   @Get()
-  getAll(): Observable<Array<Product>> {
+  getAll(): Observable<Array<Product> | any> {
     return this.appService.getAll().pipe(
       map(res => res),
-      catchError(err => of(err))
+      catchError(err => of(handleErrorRequest(err)))
     )
   }
 
   @Post()
-  createProduct(product): Observable<Product> {
+  createProduct(@Body() product): Observable<Product | any> {
     return this.appService.create(product).pipe(
       map(res => res),
-      catchError(err => of(err))
+      catchError(err => of(handleErrorRequest(err)))
     )
   }
 }
