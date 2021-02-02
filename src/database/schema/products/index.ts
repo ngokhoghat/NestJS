@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import { Connection } from 'mongoose';
-import { constant } from 'src/utils';
+import { Schema } from 'src/utils/constant';
 
 export const ProductSchema = new mongoose.Schema({
   name: {
@@ -24,14 +24,17 @@ export const ProductSchema = new mongoose.Schema({
     required: [true, 'Status is required.'],
     enum: ['inStock', 'outStock']
   },
-
+  currency: {
+    type: String,
+    default: "$"
+  }
 });
 
 
 export const ProductsProviders = [
   {
-    provide: constant.Schema.PRODUCT_MODEL,
+    provide: 'PRODUCT_MODEL',
     useFactory: (connection: Connection) => connection.model('Product', ProductSchema),
-    inject: [constant.Schema.DATABASE_CONNECTION],
+    inject: [Schema.DATABASE_CONNECTION],
   },
 ];

@@ -9,7 +9,7 @@ import { from, Observable } from 'rxjs';
 @Injectable()
 export class ProductsService extends MongodbGateway<Product, string> {
   constructor(
-    @Inject(constant.Schema.PRODUCT_MODEL)
+    @Inject('PRODUCT_MODEL')
     private productModel: Model<Product>,
   ) {
     super();
