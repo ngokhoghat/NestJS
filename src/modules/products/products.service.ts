@@ -9,25 +9,26 @@ import { from, Observable } from 'rxjs';
 @Injectable()
 export class ProductsService extends MongodbGateway<Product, string> {
   constructor(
-    @Inject('PRODUCT_MODEL')
+    @Inject(constant.Schema.PRODUCT_MODEL)
     private productModel: Model<Product>,
   ) {
     super();
   }
 
   getAll(): Observable<Array<Product>> {
-    return from(this.productModel.find().exec());
+    return from(this.productModel.find().exec()); // get all products
   }
-  getById(): Observable<Product> {
-    throw new Error('Method not implemented.');
+  getById(id: string): Observable<Product> {
+    return from(this.productModel.findById({ _id: id })) // get product by id
   }
   getBy(param: string): Observable<Product[]> {
     throw new Error('Method not implemented.');
   }
-  create(product: Product): Observable<Product> {
-    return from(this.productModel.create(product));
+  create(param: Product): Observable<Product> {
+    return from(this.productModel.create(param)); // create product
   }
   delete(param: string): Observable<Product> {
     throw new Error('Method not implemented.');
   }
+
 }

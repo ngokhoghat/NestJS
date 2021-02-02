@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { handleErrorRequest } from 'src/database/gateways/mongodb';
@@ -13,6 +13,14 @@ export class ProductsController {
   @Get()
   getAll(): Observable<Array<Product> | any> {
     return this.appService.getAll().pipe(
+      map(res => res),
+      catchError(err => of(handleErrorRequest(err)))
+    )
+  }
+  
+  @Get(':id')
+  getById(@Param() params): Observable<Array<Product> | any> {
+    return this.appService.getById(params.id).pipe(
       map(res => res),
       catchError(err => of(handleErrorRequest(err)))
     )

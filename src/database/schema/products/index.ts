@@ -26,14 +26,15 @@ export const ProductSchema = new mongoose.Schema({
   },
   currency: {
     type: String,
-    default: "$"
+    default: "$",
+    enum: ["$", "VND"]
   }
 });
 
 
 export const ProductsProviders = [
   {
-    provide: 'PRODUCT_MODEL',
+    provide: Schema.PRODUCT_MODEL,
     useFactory: (connection: Connection) => connection.model('Product', ProductSchema),
     inject: [Schema.DATABASE_CONNECTION],
   },
