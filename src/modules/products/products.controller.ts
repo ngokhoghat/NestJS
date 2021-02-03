@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Delete } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { handleErrorRequest, handleSuccessRequest } from 'src/database/gateways/mongodb';
+import { handleErrorRequest, handleSuccessRequest, methods } from 'src/database/gateways/mongodb';
 
 import { Product } from './products.model';
 import { ProductsService } from './products.service';
@@ -17,7 +17,7 @@ export class ProductsController {
       catchError(err => of(handleErrorRequest(err)))
     )
   }
-  
+
   @Get(':id')
   getById(@Param() params): Observable<Array<Product> | any> {
     return this.appService.getById(params.id).pipe(
@@ -25,11 +25,11 @@ export class ProductsController {
       catchError(err => of(handleErrorRequest(err)))
     )
   }
-  
+
   @Delete(':id')
   deleteProduct(@Param() params): Observable<Array<Product> | any> {
     return this.appService.delete(params.id).pipe(
-      map(res => handleSuccessRequest(res)),
+      map(res => handleSuccessRequest(res, methods.DELETE)),
       catchError(err => of(handleErrorRequest(err)))
     )
   }

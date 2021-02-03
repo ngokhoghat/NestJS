@@ -1,1 +1,1 @@
-export const a = 'a'
+export * as googleServiece from './googleSevices'

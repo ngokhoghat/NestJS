@@ -29,11 +29,9 @@ export const initConfig = (): Promise<IRemoteConfig> => {
       appId: "1:697952750982:web:fa292d4817ad01f9f67007",
       measurementId: "G-5B2Y035WY6"
     };
-   
+
 
     const config: IRemoteConfig = {
-      accessToken:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNpdGVjb3JlXFxJbnRlcm5hbEFwaVVzZXIiLCJuYmYiOjE1ODk3OTA5MTIsImV4cCI6NDc0NTQ2NDUxMiwiaWF0IjoxNTg5NzkwOTEyLCJpc3MiOiJodHRwOi8vZGV2LnJlZGlzYXBpLm15c3RheXMuY29tIn0.1qb571XqYjwpJZc3KgwOquB2gRYnjohTDNBUwpV8x8I',
       endpoint: 'https://devtriplaapi.mystays.com',
       domain: 'https://devtriplaapi.mystays.com',
       googleApiKey: 'AIzaSyCMHguf4YtVuO7CzkFawENNXmIXSJ-c9uM',
@@ -43,6 +41,7 @@ export const initConfig = (): Promise<IRemoteConfig> => {
       membership_endpoint: 'https://endpoint.tripla.ai',
       new_membership_endpoint: 'https://endpoint.tripla.ai',
       new_session_endpoint: 'https://idp.tripla.ai',
+      fireBaseEndPoint: "https://firebasestorage.googleapis.com/v0/b/coffee-house-3eb7f.appspot.com/o/",
       firebaseConfig,
       ...remoteConfig,
     }

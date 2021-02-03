@@ -6,8 +6,9 @@ export const databaseProviders = [
     provide: constant.Schema.DATABASE_CONNECTION,
     useFactory: (): Promise<typeof mongoose> =>
       mongoose.connect(constant.MONGO_DB_URL, {
+        useCreateIndex: true,
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
       }),
   },
 ];

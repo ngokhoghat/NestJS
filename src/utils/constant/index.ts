@@ -2,6 +2,7 @@ export const MONGO_DB_URL = 'mongodb+srv://ngocdinh:8832310@cluster0.5tczl.mongo
 
 export enum Schema {
   CAT_MODEL = 'CAT_MODEL',
+  IMAGE_MODEL = 'IMAGE_MODEL',
   PRODUCT_MODEL = 'PRODUCT_MODEL',
   DATABASE_CONNECTION = 'DATABASE_CONNECTION',
 }
