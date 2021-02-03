@@ -27,8 +27,10 @@ export class ProductsService extends MongodbGateway<Product, string> {
   create(param: Product): Observable<Product> {
     return from(this.productModel.create(param)); // create product
   }
-  delete(param: string): Observable<Product> {
-    throw new Error('Method not implemented.');
+  delete(id: string): Observable<Product> {
+    return from(this.productModel.deleteOne({ _id: id })); // delete product
   }
-
+  update(param: Product): Observable<Product> {
+    return from(this.productModel.findOneAndUpdate(param.id, param)); // update product
+  }
 }

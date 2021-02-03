@@ -5,7 +5,8 @@ export default abstract class MongodbGateway<T, X> {
   abstract getById(id: X): Observable<T>;
   abstract getBy(param: X): Observable<Array<T>>;
   abstract create(param: T): Observable<T>;
-  abstract delete(param: X): Observable<T>;
+  abstract delete(id: X): Observable<T>;
+  abstract update(param: T): Observable<T>;
 }
 
 export const handleErrorRequest = (error) => {
@@ -31,10 +32,27 @@ export const handleErrorRequest = (error) => {
   return errorMessage;
 }
 
+export const handleSuccessRequest = (data) => {
+  const result: resultModel = {
+    code: '',
+    message: '',
+    data: []
+  }
+
+  result.data = data;
+  return result;
+}
+
 export interface errorModel {
   code: string
   message: string,
   errors: Array<any>,
+}
+
+export interface resultModel {
+  code: string
+  message: string,
+  data: Array<any>,
 }
 
 export enum errorType {
