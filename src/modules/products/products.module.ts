@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common';
 import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
 
-import { DatabaseModule } from 'src/database/database.module';
+import { MongoDBModule } from 'src/database/mongoDB.module';
 import { ProductsProviders } from 'src/database/schema/products';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [MongoDBModule],
   controllers: [ProductsController],
   providers: [
     ProductsService,
